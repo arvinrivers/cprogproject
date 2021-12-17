@@ -1,7 +1,7 @@
 #include "../includes/GameEngine.h"
 #include <SDL2/SDL.h>
 
-System::System() {
+GameEngine::GameEngine() {
     SDL_Init(SDL_INIT_EVERYTHING);
     win = SDL_CreateWindow("CoinCollector", 10, 10, 700, 500, 0);
     ren = SDL_CreateRenderer(win, -1, 0);
@@ -12,7 +12,7 @@ System::System() {
     Mix_PlayChannel(-1, music, -1);
 }
 
-System::~System() {
+GameEngine::~GameEngine() {
     Mix_FreeChunk(music);
     Mix_CloseAudio();
     SDL_DestroyWindow(win);

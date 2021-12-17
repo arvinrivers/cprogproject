@@ -7,13 +7,13 @@ CC = g++
 SRC_FILES = $(wildcard $(SRC_DIR)/*.cpp)
 OBJ_NAME = play
 # Mac INCLUDE_PATHS
-INCLUDE_PATHS = -Iinclude -I/usr/local/include
+# INCLUDE_PATHS = -Iinclude -I/usr/local/include
 # Windows INCLUDE_PATHS
-#INCLUDE_PATHS = -Iinclude -IC:/msys64/mingw64/include
+INCLUDE_PATHS = -Iinclude -IC:/msys64/mingw64/include
 # Mac LIBRARY_PATHS
-LIBRARY_PATHS = -Llib -L/usr/local/lib
+# LIBRARY_PATHS = -Llib -L/usr/local/lib
 # Windows LIBRARY_PATHS
-#LIBRARY_PATHS = -Llib -LC:/msys64/mingw64/lib
+LIBRARY_PATHS = -Llib -LC:/msys64/mingw64/lib
 COMPILER_FLAGS = -std=c++11 -Wall -O0 -g
 #LINKER_FLAGS = 
 # Om SDL2 används, Mac LINKER_FLAGS!

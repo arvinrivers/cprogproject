@@ -1,7 +1,7 @@
-#include "GameEngine.h"
+#include "../include/GameEngine.h"
 
 int main(int argc, char* argv[]) {
-    GameEngine* gameEngine = new GameEngine();
-
+    GameEngine gameEngine;
+    gameEngine.run();
     return 0;
 }

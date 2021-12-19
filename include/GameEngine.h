@@ -1,25 +1,18 @@
-
-
 #ifndef GAMEENGINE_H
 #define GAMEENGINE_H
 
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_mixer.h>
-#include <SDL2/SDL_image.h>
-#include <SDL2/SDL_ttf.h>
-#include <string>
+#include "Sprite.h"
+#include <vector>
 
-class GameEngine {
+class GameEngine
+{
 public:
-    GameEngine();
-    ~GameEngine();
+	void add(Sprite* sprite);
+	void remove(Sprite* sprite);
+	void run();
 private:
-    SDL_Window* win;
-    SDL_Renderer* ren;
-    Mix_Chunk* music;
+	std::vector<Sprite*> sprites;
+	std::vector<Sprite*> added, removed;
 };
 
-extern std::string resPath;
-extern GameEngine sys;
-
-#endif GAMEENGINE_H
+#endif

@@ -1,22 +1,50 @@
+#include <SDL2/SDL.h>
 #include "../include/GameEngine.h"
+#include "../include/Sprite.h"
+#include "../include/System.h"
 
-GameEngine::GameEngine() {
-    SDL_Init(SDL_INIT_EVERYTHING);
-    win = SDL_CreateWindow("CoinCollector", 10, 10, 700, 500, 0);
-    ren = SDL_CreateRenderer(win, -1, 0);
-    //Mix_OpenAudio(20050, AUDIO_S16SYS, 2, 4096);
-    // Path to your own 'sounds' folder!
-    //musik = Mix_LoadWAV("/Users/kjellna/dev/cpp21/f13b/sounds/bgMusic.wav");
-    //music = Mix_LoadWAV( (resPath + "sounds/bgMusic.wav").c_str() );
-    //Mix_PlayChannel(-1, music, -1);
+
+using namespace std;
+
+void GameEngine::add(Sprite* sprite) {
+	added.push_back(sprite);
 }
 
-GameEngine::~GameEngine() {
-    //Mix_FreeChunk(music);
-    //Mix_CloseAudio();
-    SDL_DestroyWindow(win);
-    SDL_DestroyRenderer(ren);
-    SDL_Quit();
+void GameEngine::remove(Sprite* sprite) {
+	removed.push_back(sprite);
 }
 
-GameEngine sys;
+void GameEngine::run() {
+	bool quit = false;
+	while (!quit) {
+		SDL_Event event;
+		while (SDL_PollEvent(&event)) {
+			switch (event.type) {
+			case SDL_QUIT: quit = true; 
+            break;
+			}
+		}
+
+		for (Sprite* s : sprites)
+			s->tick(this);
+		for (Sprite* s : added)
+			sprites.push_back(s);
+		added.clear();
+		for (Sprite* s : removed)
+			for (vector<Sprite*>::iterator i = sprites.begin();
+				i != sprites.end();)
+				if (*i == s) {
+					i = sprites.erase(i);
+				}
+				else
+					i++;
+		removed.clear();
+		SDL_SetRenderDrawColor(sys.get_renderer(), 255, 255, 255, 255);
+		SDL_RenderClear(sys.get_renderer());
+		for (Sprite* s : sprites)
+			s->draw();
+		SDL_RenderPresent(sys.get_renderer());
+	}
+}
+
+GameEngine gameEngine;

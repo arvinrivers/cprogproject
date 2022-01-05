@@ -14,7 +14,6 @@ void Player::draw() const{
 	//	SDL_SetColorKey(surface, true, white);
         const SDL_Rect &rect = getRect();
 		SDL_RenderCopy(sys.get_renderer(), getTexture(), NULL, &rect);
-		SDL_DestroyTexture(getTexture());
 }
 
 

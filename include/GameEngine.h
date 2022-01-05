@@ -7,8 +7,8 @@
 class GameEngine
 {
 public:
-	void add(Sprite* sprite);
-	void remove(Sprite* sprite);
+	void add(Sprite*);
+	void remove(Sprite*);
 	void run();
 private:
 	std::vector<Sprite*> sprites;

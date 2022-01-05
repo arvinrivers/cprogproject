@@ -56,5 +56,3 @@ void GameEngine::run() {
         }
 	}
 }
-
-GameEngine gameEngine;

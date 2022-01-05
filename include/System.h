@@ -17,8 +17,6 @@ private:
     SDL_Renderer* ren;
     Mix_Chunk* music;
 };
-
-extern std::string resPath;
 extern System sys;
 
 #endif

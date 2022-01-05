@@ -13,13 +13,6 @@ class Player : public Sprite
 public:
    Player(int x, int y, int w, int h, const string& imgPath);
    void draw() const;
-private:
-    SDL_Surface* surface;
-    int x;
-    int y;
-    int w;
-    int h;
-    System sys;
 };
 
 #endif

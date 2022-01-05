@@ -3,7 +3,7 @@
 
 System::System() {
     SDL_Init(SDL_INIT_EVERYTHING);
-    win = SDL_CreateWindow("VideoGame", 10, 10, 700, 500, 0);
+    win = SDL_CreateWindow("VideoGame", 50, 50, 700, 500, 0);
     ren = SDL_CreateRenderer(win, -1, 0);
     Mix_OpenAudio(20050, AUDIO_S16SYS, 2, 4096);
     // Path to your own 'sounds' folder!

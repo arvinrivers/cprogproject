@@ -3,6 +3,8 @@
 #include "Sprite.h"
 #include "System.h"
 
+#define FPS 60
+
 
 using namespace std;
 
@@ -16,7 +18,9 @@ void GameEngine::remove(Sprite* sprite) {
 
 void GameEngine::run() {
 	bool quit = false;
+	const int tickIntervall = 1000/FPS;
 	while (!quit) {
+		Uint32 nextTick = SDL_GetTicks() + tickIntervall;
 		SDL_Event event;
 		while (SDL_PollEvent(&event)) {
 			switch (event.type) {
@@ -39,11 +43,17 @@ void GameEngine::run() {
 				else
 					i++;
 		removed.clear();
-		SDL_SetRenderDrawColor(sys.get_renderer(), 255, 255, 255, 255);
+		
 		SDL_RenderClear(sys.get_renderer());
+		SDL_SetRenderDrawColor(sys.get_renderer(), 255, 255, 255, 255);
+		//SDL_RenderClear(sys.get_renderer());
 		for (Sprite* s : sprites)
 			s->draw();
 		SDL_RenderPresent(sys.get_renderer());
+		int delay = nextTick - SDL_GetTicks();
+        if(delay > 0){
+            SDL_Delay(delay);
+        }
 	}
 }
 

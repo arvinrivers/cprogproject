@@ -1,7 +1,7 @@
 #include <SDL2/SDL.h>
-#include "../include/GameEngine.h"
-#include "../include/Sprite.h"
-#include "../include/System.h"
+#include "GameEngine.h"
+#include "Sprite.h"
+#include "System.h"
 
 
 using namespace std;

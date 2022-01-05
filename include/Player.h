@@ -2,14 +2,24 @@
 #define PLAYER_H
 
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 #include "Sprite.h"
+#include "System.h"
+#include <string>
+using namespace std;
 
 class Player : public Sprite
 {
 public:
-    Player(int x, int y, int w, int h) : Sprite{ x, y, w, h}{
-        affectedByGravity = true;
-    }
+   Player(int x, int y, int w, int h, const string& imgPath);
+   void draw() const;
+private:
+    SDL_Surface* surface;
+    int x;
+    int y;
+    int w;
+    int h;
+    System sys;
 };
 
 #endif

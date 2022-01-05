@@ -2,7 +2,7 @@
 #include "GameEngine.h"
 #include "Sprite.h"
 #include "System.h"
-
+#include <iostream>
 #define FPS 60
 
 
@@ -26,6 +26,10 @@ void GameEngine::run() {
 			switch (event.type) {
 			case SDL_QUIT: quit = true; 
             break;
+			case SDL_KEYDOWN:
+			for (Sprite* s : sprites)
+				 s->keyDown(event);
+			break;
 			}
 		}
 
@@ -47,8 +51,9 @@ void GameEngine::run() {
 		SDL_RenderClear(sys.get_renderer());
 		SDL_SetRenderDrawColor(sys.get_renderer(), 255, 255, 255, 255);
 		//SDL_RenderClear(sys.get_renderer());
-		for (Sprite* s : sprites)
+		for (Sprite* s : sprites){
 			s->draw();
+		}
 		SDL_RenderPresent(sys.get_renderer());
 		int delay = nextTick - SDL_GetTicks();
         if(delay > 0){

@@ -12,11 +12,9 @@ public:
     virtual void tick(GameEngine* ge){}
 	SDL_Rect getRect() const { return rect; }
     virtual ~Sprite(){}
-    virtual void keyRight(const SDL_Event& event) {}
-	virtual void keyLeft(const SDL_Event& event) {}
+    virtual void keyDown(const SDL_Event& event) {}
     bool isGrounded(){return grounded;}
     bool isAffectedByGravity(){return affectedByGravity;}
-    
 protected:
 	Sprite(int x, int y, int w, int h, const string& imgPath);
     bool affectedByGravity = false;

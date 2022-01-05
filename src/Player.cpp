@@ -16,5 +16,10 @@ void Player::draw() const{
 		SDL_RenderCopy(sys.get_renderer(), getTexture(), NULL, &rect);
 }
 
+void Player::keyDown(const SDL_Event& event) {
+    keyDownHandler(event);
+}
+
+
 
 

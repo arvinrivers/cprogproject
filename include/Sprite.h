@@ -12,10 +12,12 @@ public:
     virtual ~Sprite(){}
     virtual void keyRight(const SDL_Event& event) {}
 	virtual void keyLeft(const SDL_Event& event) {}
+    bool isGrounded(){return grounded;}
 protected:
 	Sprite(int x, int y, int w, int h) : rect{ x,y,w,h } {}
 	SDL_Rect rect;
 private:
+    bool grounded;
     Sprite(const Sprite& other) = delete;
     const Sprite& operator=(const Sprite& other) = delete;
 };

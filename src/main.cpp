@@ -4,6 +4,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "Collectable.h"
+#include "Ground.h"
 #include <iostream>
 #include <string>
 
@@ -11,7 +12,7 @@ std::string resPath = "resources/";
 
 class MyPlayer : public Player {
 public:
-	MyPlayer() : Player(0, 460, 40, 40, resPath + "images/player.jpg")
+	MyPlayer() : Player(320, 250, 40, 40, resPath + "images/player.jpg")
 	{
 		
 	}
@@ -68,14 +69,24 @@ public:
     }
 };
 
+class MyGround : public Ground {
+public:
+    MyGround() : Ground(300, 300, 300, 20, resPath + "images/ground.jpg")
+    {
+
+    }
+};
+
 int main(int argc, char* argv[]) {
     GameEngine gameEngine;
     Player* player = new MyPlayer();
     Enemy* enemy = new MyEnemy();
     Collectable* coin = new MyCoin();
+    Ground* ground = new MyGround();
     gameEngine.add(player);
     gameEngine.add(enemy);
     gameEngine.add(coin);
+    gameEngine.add(ground);
     gameEngine.run();
     return 0;
 }

@@ -14,7 +14,10 @@ public:
    Player(int x, int y, int w, int h, const string& imgPath);
    void draw() const;
    void keyDown(const SDL_Event& event);
+   virtual void jump(){};
    virtual void keyDownHandler(const SDL_Event& event){}
+   virtual void tick(GameEngine* ge);
+
 };
 
 #endif

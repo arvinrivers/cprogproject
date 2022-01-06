@@ -14,6 +14,7 @@ public:
     virtual ~Sprite(){}
     virtual void keyDown(const SDL_Event& event) {}
     bool isGrounded(){return grounded;}
+    void setGrounded(bool state){grounded = state;}
     bool isAffectedByGravity(){return affectedByGravity;}
 protected:
 	Sprite(int x, int y, int w, int h, const string& imgPath);
@@ -21,7 +22,7 @@ protected:
     SDL_Texture* getTexture() const { return texture; }
     SDL_Rect rect;
 private:
-    bool grounded = false;
+    bool grounded = true;
     Sprite(const Sprite& other) = delete;
     const Sprite& operator=(const Sprite& other) = delete;
     SDL_Texture* texture = nullptr;

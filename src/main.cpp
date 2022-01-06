@@ -20,12 +20,22 @@ public:
 		switch (event.key.keysym.sym) 
 		{
 		case SDLK_RIGHT:
-			rect.x += 1; 
+			rect.x += 30; 
 			break;
 	    case SDLK_LEFT: 
 			rect.x -= 1; 
 			break;
+        case SDLK_UP: 
+            setGrounded(false);
+            break;
 		}
+    }
+    void jump(){
+        static int foo = 0;
+        if(!isGrounded() && foo < 30){
+        rect.y -= 10;
+        foo++;
+        }
     }
 
 };

@@ -20,6 +20,13 @@ void Player::keyDown(const SDL_Event& event) {
     keyDownHandler(event);
 }
 
+void Player::tick(GameEngine* ge)
+{
+	jump();
+	if (!isGrounded()){
+		rect.y += 5;
+	}
+}
 
 
 

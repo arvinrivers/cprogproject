@@ -5,10 +5,13 @@
 #include "Enemy.h"
 #include "Collectable.h"
 #include <iostream>
+#include <string>
+
+std::string resPath = "resources/";
 
 class MyPlayer : public Player {
 public:
-	MyPlayer() : Player(0, 460, 40, 40, "C:/Users/arsol/OneDrive/Skrivbord/cprogproject-5/resources/images/player.jpg")
+	MyPlayer() : Player(0, 460, 40, 40, resPath + "images/player.jpg")
 	{
 		
 	}
@@ -29,7 +32,7 @@ public:
 
 class MyEnemy : public Enemy {
 public:
-	MyEnemy() : Enemy(660, 460, 40, 40, "C:/Users/arsol/OneDrive/Skrivbord/cprogproject-5/resources/images/enemy.jpg")
+	MyEnemy() : Enemy(660, 460, 40, 40, resPath + "images/enemy.jpg")
 	{
 
     }
@@ -50,7 +53,7 @@ public:
 
 class MyCoin : public Collectable {
 public:
-	MyCoin() : Collectable(700, 60, 40, 40, "C:/Users/arsol/OneDrive/Skrivbord/cprogproject-5/resources/images/coin.png")
+	MyCoin() : Collectable(660, 0, 40, 40, resPath + "images/coin.png")
 	{
     }
 };

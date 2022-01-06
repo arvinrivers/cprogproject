@@ -3,6 +3,7 @@
 
 #include <SDL2/SDL.h>
 #include <string>
+#include <vector>
 using namespace std;
 class GameEngine;
 class Sprite
@@ -13,7 +14,8 @@ public:
 	SDL_Rect getRect() const { return rect; }
     virtual ~Sprite(){}
     virtual void keyDown(const SDL_Event& event) {}
-    bool isGrounded(){return grounded;}
+    bool isGrounded();
+    void updateGrounded(std::vector<Sprite*> grounds);
     void setGrounded(bool state){grounded = state;}
     bool isAffectedByGravity(){return affectedByGravity;}
 protected:

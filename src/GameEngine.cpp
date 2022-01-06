@@ -2,6 +2,7 @@
 #include "GameEngine.h"
 #include "Sprite.h"
 #include "System.h"
+#include "Ground.h"
 #include <iostream>
 #define FPS 60
 
@@ -10,6 +11,9 @@ using namespace std;
 
 void GameEngine::add(Sprite* sprite) {
 	added.push_back(sprite);
+	if (Ground* ground = dynamic_cast<Ground*>(sprite)){
+		grounds.push_back(ground);
+	}
 }
 
 void GameEngine::remove(Sprite* sprite) {

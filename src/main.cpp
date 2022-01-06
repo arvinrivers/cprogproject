@@ -24,18 +24,16 @@ public:
 			rect.x += 30; 
 			break;
 	    case SDLK_LEFT: 
-			rect.x -= 1; 
+			rect.x -= 30; 
 			break;
         case SDLK_UP: 
-            setGrounded(false);
+            jump();
             break;
 		}
     }
     void jump(){
-        static int foo = 0;
-        if(!isGrounded() && foo < 30){
-        rect.y -= 10;
-        foo++;
+        if(isGrounded()){
+            rect.y -= 70;
         }
     }
 
@@ -69,24 +67,20 @@ public:
     }
 };
 
-class MyGround : public Ground {
-public:
-    MyGround() : Ground(300, 300, 300, 20, resPath + "images/ground.jpg")
-    {
 
-    }
-};
 
 int main(int argc, char* argv[]) {
     GameEngine gameEngine;
     Player* player = new MyPlayer();
     Enemy* enemy = new MyEnemy();
     Collectable* coin = new MyCoin();
-    Ground* ground = new MyGround();
+    Ground* ground = new Ground(300, 300, 300, 20, resPath + "images/ground.jpg");
+    Ground* ground2 = new Ground(0, 300, 250, 20, resPath + "images/ground.jpg");
     gameEngine.add(player);
     gameEngine.add(enemy);
     gameEngine.add(coin);
     gameEngine.add(ground);
+    gameEngine.add(ground2);
     gameEngine.run();
     return 0;
 }

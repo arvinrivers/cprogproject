@@ -3,11 +3,12 @@
 #include "Sprite.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "Collectable.h"
 #include <iostream>
 
 class MyPlayer : public Player {
 public:
-	MyPlayer() : Player(0, 460, 40, 40, "C:/Users/arsol/OneDrive/Skrivbord/cprogproject-5/resources/images/821759741633626212.png")
+	MyPlayer() : Player(0, 460, 40, 40, "C:/Users/arsol/OneDrive/Skrivbord/cprogproject-5/resources/images/player.jpg")
 	{
 		
 	}
@@ -28,7 +29,7 @@ public:
 
 class MyEnemy : public Enemy {
 public:
-	MyEnemy() : Enemy(400, 660, 40, 40, "C:/Users/arsol/OneDrive/Skrivbord/cprogproject-5/resources/images/evilsprite.jpg")
+	MyEnemy() : Enemy(660, 460, 40, 40, "C:/Users/arsol/OneDrive/Skrivbord/cprogproject-5/resources/images/enemy.jpg")
 	{
 
     }
@@ -47,12 +48,21 @@ public:
  }
 };
 
+class MyCoin : public Collectable {
+public:
+	MyCoin() : Collectable(700, 60, 40, 40, "C:/Users/arsol/OneDrive/Skrivbord/cprogproject-5/resources/images/coin.png")
+	{
+    }
+};
+
 int main(int argc, char* argv[]) {
     GameEngine gameEngine;
     Player* player = new MyPlayer();
     Enemy* enemy = new MyEnemy();
+    Collectable* coin = new MyCoin();
     gameEngine.add(player);
     gameEngine.add(enemy);
+    gameEngine.add(coin);
     gameEngine.run();
     return 0;
 }

@@ -3,10 +3,12 @@
 #include "Sprite.h"
 #include "System.h"
 #include "Player.h"
+#include "GameEngine.h"
+#include <iostream>
 
 
 Player::Player(int x, int y, int w, int h,const string& imgPath):Sprite(x,y,w,h,imgPath){
-  
+	affectedByGravity = true;
 }
 
 void Player::draw() const{
@@ -22,9 +24,9 @@ void Player::keyDown(const SDL_Event& event) {
 
 void Player::tick(GameEngine* ge)
 {
-	jump();
+	updateGrounded(ge->grounds);
 	if (!isGrounded()){
-		rect.y += 5;
+		rect.y += 1;
 	}
 }
 

@@ -5,8 +5,9 @@
 #include <SDL2/SDL_image.h>
 #include "Sprite.h"
 #include "System.h"
+#include "Ground.h"
 
-
+class System;
 class Enemy : public Sprite
 {
 public:
@@ -14,6 +15,13 @@ public:
    void draw() const;
    virtual void scriptedMovement(){};
    virtual void tick(GameEngine* ge);
+   int nextEdge();
+   void moveEnemy(int speed);
+   void setSpeed(int s){speed = s;}
+   int getSpeed(){return speed;}
+private:
+   int speed;
+   
 };
 
 #endif

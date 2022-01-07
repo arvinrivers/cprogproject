@@ -12,7 +12,7 @@ std::string resPath = "resources/";
 
 class MyPlayer : public Player {
 public:
-	MyPlayer() : Player(320, 250, 40, 40, resPath + "images/player.jpg")
+	MyPlayer() : Player(320, 40, 40, 40, resPath + "images/player.jpg")
 	{
 		
 	}
@@ -21,10 +21,10 @@ public:
 		switch (event.key.keysym.sym) 
 		{
 		case SDLK_RIGHT:
-			rect.x += 30; 
+			rect.x += 15; 
 			break;
 	    case SDLK_LEFT: 
-			rect.x -= 30; 
+			rect.x -= 15; 
 			break;
         case SDLK_UP: 
             jump();
@@ -33,7 +33,7 @@ public:
     }
     void jump(){
         if(isGrounded()){
-            rect.y -= 70;
+            setJumping(true);
         }
     }
 
@@ -41,23 +41,25 @@ public:
 
 class MyEnemy : public Enemy {
 public:
-	MyEnemy() : Enemy(660, 460, 40, 40, resPath + "images/enemy.jpg")
+	MyEnemy() : Enemy(30, 150, 40, 40, resPath + "images/enemy.jpg")
 	{
-
+        
     }
     bool isMovingLeft = true;
     void scriptedMovement(){
-    if (isMovingLeft){
-        rect.x -= 2; 
+        int edge = nextEdge();
+        if (isMovingLeft){
+            rect.x -= 1;
+        }
+        else{
+            rect.x += 1; 
+        }
+        if(rect.x == edge)
+            isMovingLeft = false;
+        else if(rect.x == 660)
+            isMovingLeft = true;
+    
     }
-    else{
-        rect.x += 2; 
-    }
-    if(rect.x == 0)
-       isMovingLeft = false;
-    else if(rect.x == 660)
-       isMovingLeft = true;
- }
 };
 
 class MyCoin : public Collectable {
@@ -73,6 +75,7 @@ int main(int argc, char* argv[]) {
     GameEngine gameEngine;
     Player* player = new MyPlayer();
     Enemy* enemy = new MyEnemy();
+    enemy->setSpeed(-10);
     Collectable* coin = new MyCoin();
     Ground* ground = new Ground(300, 300, 300, 20, resPath + "images/ground.jpg");
     Ground* ground2 = new Ground(0, 300, 250, 20, resPath + "images/ground.jpg");

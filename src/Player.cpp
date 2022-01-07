@@ -27,7 +27,7 @@ void Player::tick(GameEngine* ge)
 {
 	updateGrounded(ge->grounds);
 	if (!isGrounded()){
-		rect.y += 1;
+		rect.y += getySpeed();
 	}
 }
 

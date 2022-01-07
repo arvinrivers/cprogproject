@@ -17,6 +17,7 @@ void Player::draw() const{
 }
 
 void Player::keyDown(const SDL_Event& event) {
+	
     keyDownHandler(event);
 }
 

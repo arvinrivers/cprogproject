@@ -73,5 +73,15 @@ void Sprite::setJumping(bool state){
         jumpCounter = 40;
         ySpeed = -6;
     }
-    
+}
+
+bool Sprite::checkCollision(std::vector<Sprite*> list1, std::vector<Sprite*> list2) {
+    for (Sprite* s1 : list1){
+      const SDL_Rect& A = s1->getRect();
+      for (Sprite* s2 : list2){
+        const SDL_Rect& B = s2->getRect();
+        return (A.x+A.w > B.x && B.x+B.w > A.x && A.y + A.h > B.y && B.y+B.h > A.y);
+    }
+    }
+    return false;
 }

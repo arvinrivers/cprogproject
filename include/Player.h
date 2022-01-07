@@ -17,7 +17,10 @@ public:
    virtual void jump(){};
    virtual void keyDownHandler(const SDL_Event& event){}
    virtual void tick(GameEngine* ge);
-
+   virtual void winConditionHandler(){};
+   virtual void loseConditionHandler(){};
+   bool winConditionMet = false;
+   bool loseConditionMet = false;
 };
 
 #endif

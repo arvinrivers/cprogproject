@@ -9,6 +9,9 @@
 #include <string>
 
 std::string resPath = "resources/";
+Ground* won = new Ground(0 , 0, 700, 500, resPath + "images/won.jpg");
+Ground* lost = new Ground(0 , 0, 700, 500, resPath + "images/lost.jpg");
+GameEngine gameEngine;
 
 class MyPlayer : public Player {
 public:
@@ -36,6 +39,20 @@ public:
             rect.y -= 70;
         }
     }
+    void winConditionHandler(){
+        if (winConditionMet){
+         gameEngine.remove(this);
+         gameEngine.add(won);
+        }
+    }
+
+    void loseConditionHandler(){
+        if (loseConditionMet){
+         gameEngine.remove(this);
+         gameEngine.add(lost);
+        }
+    }
+
 
 };
 
@@ -58,19 +75,17 @@ public:
     else if(rect.x == 660)
        isMovingLeft = true;
  }
+
 };
 
 class MyCoin : public Collectable {
 public:
-	MyCoin() : Collectable(660, 0, 40, 40, resPath + "images/coin.png")
+	MyCoin() : Collectable(660, 300, 40, 40, resPath + "images/coin.png")
 	{
     }
 };
 
-
-
 int main(int argc, char* argv[]) {
-    GameEngine gameEngine;
     Player* player = new MyPlayer();
     Enemy* enemy = new MyEnemy();
     Collectable* coin = new MyCoin();

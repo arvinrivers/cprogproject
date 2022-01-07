@@ -18,6 +18,7 @@ public:
     void updateGrounded(std::vector<Sprite*> grounds);
     void setGrounded(bool state){grounded = state;}
     bool isAffectedByGravity(){return affectedByGravity;}
+    bool checkCollision(std::vector<Sprite*> list1, std::vector<Sprite*> list2);
 protected:
 	Sprite(int x, int y, int w, int h, const string& imgPath);
     bool affectedByGravity = false;

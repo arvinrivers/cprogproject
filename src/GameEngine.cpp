@@ -3,16 +3,26 @@
 #include "Sprite.h"
 #include "System.h"
 #include "Ground.h"
+#include "Enemy.h"
+#include "Player.h"
+#include "Collectable.h"
 #include <iostream>
 #define FPS 60
-
-
 using namespace std;
 
 void GameEngine::add(Sprite* sprite) {
 	added.push_back(sprite);
 	if (Ground* ground = dynamic_cast<Ground*>(sprite)){
 		grounds.push_back(ground);
+	}
+	if (Enemy* enemy = dynamic_cast<Enemy*>(sprite)){
+		enemies.push_back(enemy);
+	}
+	if (Collectable* col = dynamic_cast<Collectable*>(sprite)){
+		collectables.push_back(col);
+	}
+	if (Player* player = dynamic_cast<Player*>(sprite)){
+		players.push_back(player);
 	}
 }
 
@@ -36,7 +46,6 @@ void GameEngine::run() {
 			break;
 			}
 		}
-
 		for (Sprite* s : sprites)
 			s->tick(this);
 		for (Sprite* s : added)
@@ -54,7 +63,6 @@ void GameEngine::run() {
 		
 		SDL_RenderClear(sys.get_renderer());
 		SDL_SetRenderDrawColor(sys.get_renderer(), 255, 255, 255, 255);
-		//SDL_RenderClear(sys.get_renderer());
 		for (Sprite* s : sprites){
 			s->draw();
 		}

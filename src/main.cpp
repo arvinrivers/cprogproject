@@ -58,24 +58,11 @@ public:
 
 class MyEnemy : public Enemy {
 public:
-	MyEnemy() : Enemy(30, 150, 40, 40, resPath + "images/enemy.jpg")
+	MyEnemy() : Enemy(50, 250, 40, 40, resPath + "images/enemy.jpg")
 	{
         
     }
-    bool isMovingLeft = true;
-    void scriptedMovement(){
-        int edge = nextEdge();
-        if (isMovingLeft){
-            rect.x -= 1;
-        }
-        else{
-            rect.x += 1; 
-        }
-        if(rect.x == 0)
-            isMovingLeft = false;
-        else if(rect.x == 660)
-            isMovingLeft = true;
- }
+    
 
 };
 
@@ -89,10 +76,10 @@ public:
 int main(int argc, char* argv[]) {
     Player* player = new MyPlayer();
     Enemy* enemy = new MyEnemy();
-    enemy->setSpeed(-10);
+    enemy->setSpeed(-17);
     Collectable* coin = new MyCoin();
     Ground* ground = new Ground(300, 300, 300, 20, resPath + "images/ground.jpg");
-    Ground* ground2 = new Ground(0, 300, 250, 20, resPath + "images/ground.jpg");
+    Ground* ground2 = new Ground(15, 300, 250, 20, resPath + "images/ground.jpg");
     gameEngine.add(player);
     gameEngine.add(enemy);
     gameEngine.add(coin);

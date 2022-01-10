@@ -1,0 +1,5 @@
+make.exe --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/c/Users/morte/OneDrive/Documents/GitHub/cprogproject'
+g++ -std=c++11 -Wall -O0 -g -Iinclude -IC:/msys64/mingw64/include -Llib -LC:/msys64/mingw64/lib src/Collectable.cpp src/Enemy.cpp src/GameEngine.cpp src/Ground.cpp src/Player.cpp src/Sprite.cpp src/System.cpp src/main.cpp -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf -o build/debug/play
+make: Leaving directory '/c/Users/morte/OneDrive/Documents/GitHub/cprogproject'
+ 

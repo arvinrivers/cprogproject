@@ -13,7 +13,7 @@ class Enemy : public Sprite
 public:
    Enemy(int x, int y, int w, int h, const string& imgPath);
    void draw() const;
-   virtual void scriptedMovement(){};
+   void scriptedMovement();
    virtual void tick(GameEngine* ge);
    int nextEdge();
    void moveEnemy(int speed);
@@ -21,6 +21,7 @@ public:
    int getSpeed(){return speed;}
 private:
    int speed;
+   bool isMovingLeft;
    
 };
 

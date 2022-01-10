@@ -1,3 +1,8 @@
+/*
+Subklass till Sprite som tillhandahåller själva spelarkaraktären.
+Kommer med funktionalitet för spelarstyrd rörelse samt win/lose-conditions.
+*/
+
 #ifndef PLAYER_H
 #define PLAYER_H
 
@@ -18,6 +23,8 @@ public:
    virtual void tick(GameEngine* ge);
    virtual void winConditionHandler(){};
    virtual void loseConditionHandler(){};
+
+   //Hjälpfält för logiken med att vinna och förlora
    bool winConditionMet = false;
    bool loseConditionMet = false;
 protected:

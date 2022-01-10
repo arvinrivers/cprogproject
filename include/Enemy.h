@@ -1,3 +1,8 @@
+/*
+Subklass till Sprite som tillhandahåller fiender i världen.
+Kommer med funktionalitet för skriptad rörelse av fienderna.
+*/
+
 #ifndef ENEMY_H
 #define ENEMY_H
 
@@ -22,9 +27,10 @@ protected:
    Enemy(int x, int y, int w, int h, const string& imgPath);
 
 private:
+   //Indikerar hastigheten som fienden rör sig varje tick
    int speed;
+   //Hjälp-fält för den skriptade rörelse-logiken
    bool isMovingLeft;
-   
 };
 
 #endif

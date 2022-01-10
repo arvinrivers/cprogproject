@@ -1,3 +1,9 @@
+/*
+Basklass för objekt i spelvärlden. Kommer med en uppsjö av funktionalitet som exempelvis
+gravitation, att kunna hoppa (om objektet är levande, ex. spelare och fiender) samt 
+funktioner för att kunna ritas upp på skärmen.
+*/
+
 #ifndef SPRITE_H
 #define SPRITE_H
 
@@ -5,11 +11,13 @@
 #include <string>
 #include <vector>
 using namespace std;
+
+
 class GameEngine;
 class Sprite
 {
 public:
-	virtual void draw() const;
+	void draw() const;
     virtual void tick(GameEngine* ge){}
 	SDL_Rect getRect() const { return rect; }
     virtual ~Sprite(){}
@@ -26,8 +34,8 @@ protected:
     SDL_Texture* getTexture() const { return texture; }
     SDL_Rect rect;
     int getTicksSinceGrounded(){return ticksSinceGrounded;}
-    int getySpeed(){return ySpeed;}
-    void setySpeed(int speed){ySpeed = speed;}
+    int getySpeed(){return verticalSpeed;}
+    void setySpeed(int speed){verticalSpeed = speed;}
     int getGravityForce();
     bool isJumping(){return jumping;}
     Sprite* getWalkingGround(){return walkingGround;}
@@ -38,7 +46,7 @@ private:
     Sprite(const Sprite& other) = delete;
     const Sprite& operator=(const Sprite& other) = delete;
     SDL_Texture* texture = nullptr;
-    int ySpeed;
+    int verticalSpeed;
     int ticksSinceGrounded;
     Sprite* walkingGround;
 };

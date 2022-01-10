@@ -1,3 +1,7 @@
+/*
+Subklass till Sprite som tillhandahåller plattformar som spelaren kan stå på
+*/
+
 #ifndef GROUND_H
 #define GROUND_H
 

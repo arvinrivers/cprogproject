@@ -1,3 +1,8 @@
+/*
+   Subklass till Sprite som tillhandahåller objekt i världen som inte är spelaren, fiender eller plattformar, 
+   exempelvis mynt som spelaren kan plocka upp.
+*/
+
 #ifndef COLLECTABLE_H
 #define COLLECTABLE_H
 

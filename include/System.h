@@ -1,3 +1,7 @@
+/*
+Utility-klass som står för själva fönstret och dess renderer
+*/
+
 #ifndef SYSTEM_H
 #define SYSTEM_H
 

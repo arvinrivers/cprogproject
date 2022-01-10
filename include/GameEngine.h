@@ -20,6 +20,7 @@ public:
 	//added är de nya sprites som skall ritas upp av spelmotorn denna tick
 	std::vector<Sprite*> grounds, enemies, collectables, added, players;
 private:
+	void removeHelp(std::vector<Sprite*>);
 	//Sprites är alla sprites som finns på skärmen ett givet tick
 	std::vector<Sprite*> sprites;	
 	//Removed är alla sprites som skall tas bort av spelmotorn ett givet tick

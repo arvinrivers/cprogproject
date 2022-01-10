@@ -59,9 +59,16 @@ void GameEngine::run() {
 		for (Sprite* s : added)
 			sprites.push_back(s);
 		added.clear();
+
+		removeHelp(grounds);
+		removeHelp(players);
+		removeHelp(enemies);
+		removeHelp(collectables);
+
 		for (Sprite* s : removed) {
 			for (vector<Sprite*>::iterator i = sprites.begin(); i != sprites.end();) {
 				if (*i == s) {
+					delete *i;
 					i = sprites.erase(i);
 				}
 				else
@@ -80,5 +87,18 @@ void GameEngine::run() {
         if(delay > 0){
             SDL_Delay(delay);
         }
+	}
+}
+
+//Hjälpmetod som rensar bort Sprites från en given vektor
+void GameEngine::removeHelp(vector<Sprite*> toRemoveFrom) {
+	for (Sprite* s : removed) {
+		for (vector<Sprite*>::iterator i = toRemoveFrom.begin(); i != toRemoveFrom.end();) {
+			if (*i == s) {
+				i = toRemoveFrom.erase(i);
+			}
+			else
+				i++;
+		}
 	}
 }

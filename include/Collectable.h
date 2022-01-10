@@ -11,7 +11,6 @@ class Collectable : public Sprite
 {
 public:
    static Collectable* getInstance(int x, int y, int w, int h, const string& imgPath);
-   void draw() const;
 protected:
    Collectable(int x, int y, int w, int h, const string& imgPath);
 

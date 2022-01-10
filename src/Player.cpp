@@ -15,11 +15,6 @@ Player* Player::getInstance(int x, int y, int w, int h, const string& imgPath) {
 		return new Player(x, y, w, h, imgPath);
 }
 
-void Player::draw() const{
-    const SDL_Rect &rect = getRect();
-	SDL_RenderCopy(sys.get_renderer(), getTexture(), NULL, &rect);
-}
-
 void Player::keyDown(const SDL_Event& event) {
 	keyDownHandler(event);
 }

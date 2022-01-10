@@ -84,3 +84,8 @@ bool Sprite::checkCollision(std::vector<Sprite*> list1, std::vector<Sprite*> lis
     }
     return false;
 }
+
+void Sprite::draw() const{
+        const SDL_Rect &rect = getRect();
+		SDL_RenderCopy(sys.get_renderer(), getTexture(), NULL, &rect);
+}

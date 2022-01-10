@@ -12,7 +12,6 @@ class Enemy : public Sprite
 {
 public:
    static Enemy* getInstance(int x, int y, int w, int h, const string& imgPath);
-   void draw() const;
    void scriptedMovement();
    virtual void tick(GameEngine* ge);
    int nextEdge();

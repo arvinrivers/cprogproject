@@ -12,9 +12,3 @@ Collectable:: Collectable(int x, int y, int w, int h,const string& imgPath):Spri
 Collectable* Collectable::getInstance(int x, int y, int w, int h, const string& imgPath) {
 		return new Collectable(x, y, w, h, imgPath);
 }
-
-
-void Collectable::draw() const{
-        const SDL_Rect &rect = getRect();
-		SDL_RenderCopy(sys.get_renderer(), getTexture(), NULL, &rect);
-}

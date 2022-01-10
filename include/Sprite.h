@@ -9,7 +9,7 @@ class GameEngine;
 class Sprite
 {
 public:
-	virtual void draw() const = 0;
+	virtual void draw() const;
     virtual void tick(GameEngine* ge){}
 	SDL_Rect getRect() const { return rect; }
     virtual ~Sprite(){}

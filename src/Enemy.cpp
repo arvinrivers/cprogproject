@@ -16,12 +16,6 @@ Enemy* Enemy::getInstance(int x, int y, int w, int h, const string& imgPath) {
 		return new Enemy(x, y, w, h, imgPath);
 }
 
-
-void Enemy::draw() const{
-        const SDL_Rect &rect = getRect();
-		SDL_RenderCopy(sys.get_renderer(), getTexture(), NULL, &rect);
-}
-
 void Enemy::tick(GameEngine* ge)
 {
 	updateGrounded(ge->grounds);

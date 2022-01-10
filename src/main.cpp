@@ -76,7 +76,7 @@ public:
 int main(int argc, char* argv[]) {
     Player* player = new MyPlayer();
     Enemy* enemy = new MyEnemy();
-    enemy->setSpeed(-17);
+    enemy->setSpeed(-10);
     Collectable* coin = new MyCoin();
     Ground* ground = Ground::getInstance(300, 300, 300, 20, resPath + "images/ground.jpg");
     Ground* ground2 = Ground::getInstance(15, 300, 250, 20, resPath + "images/ground.jpg");

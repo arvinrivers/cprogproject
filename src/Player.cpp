@@ -11,14 +11,17 @@ Player::Player(int x, int y, int w, int h,const string& imgPath):Sprite(x,y,w,h,
 	affectedByGravity = true;
 }
 
+Player* Player::getInstance(int x, int y, int w, int h, const string& imgPath) {
+		return new Player(x, y, w, h, imgPath);
+}
+
 void Player::draw() const{
-        const SDL_Rect &rect = getRect();
-		SDL_RenderCopy(sys.get_renderer(), getTexture(), NULL, &rect);
+    const SDL_Rect &rect = getRect();
+	SDL_RenderCopy(sys.get_renderer(), getTexture(), NULL, &rect);
 }
 
 void Player::keyDown(const SDL_Event& event) {
-	
-    keyDownHandler(event);
+	keyDownHandler(event);
 }
 
 void Player::tick(GameEngine* ge)

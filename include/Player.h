@@ -11,7 +11,7 @@ using namespace std;
 class Player : public Sprite
 {
 public:
-   Player(int x, int y, int w, int h, const string& imgPath);
+   static Player* getInstance(int x, int y, int w, int h, const string& imgPath);
    void draw() const;
    void keyDown(const SDL_Event& event);
    virtual void jump(){};
@@ -21,6 +21,9 @@ public:
    virtual void loseConditionHandler(){};
    bool winConditionMet = false;
    bool loseConditionMet = false;
+protected:
+   Player(int x, int y, int w, int h, const string& imgPath);
+
 };
 
 #endif

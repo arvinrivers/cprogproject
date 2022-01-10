@@ -9,8 +9,8 @@
 #include <string>
 
 std::string resPath = "resources/";
-Ground* won = new Ground(0 , 0, 700, 500, resPath + "images/won.jpg");
-Ground* lost = new Ground(0 , 0, 700, 500, resPath + "images/lost.jpg");
+Ground* won = Ground::getInstance(0 , 0, 700, 500, resPath + "images/won.jpg");
+Ground* lost = Ground::getInstance(0 , 0, 700, 500, resPath + "images/lost.jpg");
 GameEngine gameEngine;
 
 class MyPlayer : public Player {
@@ -78,8 +78,8 @@ int main(int argc, char* argv[]) {
     Enemy* enemy = new MyEnemy();
     enemy->setSpeed(-17);
     Collectable* coin = new MyCoin();
-    Ground* ground = new Ground(300, 300, 300, 20, resPath + "images/ground.jpg");
-    Ground* ground2 = new Ground(15, 300, 250, 20, resPath + "images/ground.jpg");
+    Ground* ground = Ground::getInstance(300, 300, 300, 20, resPath + "images/ground.jpg");
+    Ground* ground2 = Ground::getInstance(15, 300, 250, 20, resPath + "images/ground.jpg");
     gameEngine.add(player);
     gameEngine.add(enemy);
     gameEngine.add(coin);

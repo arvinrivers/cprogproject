@@ -10,9 +10,8 @@ Sprite::Sprite(int x, int y, int w, int h, const string& imgPath): rect{x,y,w,h}
     SDL_FreeSurface(surface);
     setJumping(false);
     walkingGround = nullptr;
-
-
 }
+
 void Sprite::updateGrounded(std::vector<Sprite*> grounds){
     if(!grounded){
         ticksSinceGrounded += 1;

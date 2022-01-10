@@ -10,8 +10,11 @@
 class Ground : public Sprite
 {
 public:
-   Ground(int x, int y, int w, int h, const string& imgPath);
+   static Ground* getInstance(int x, int y, int w, int h, const string& imgPath);
    void draw() const;
+protected:
+   Ground(int x, int y, int w, int h, const string& imgPath);
+
 };
 
 #endif

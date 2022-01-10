@@ -10,8 +10,11 @@
 class Collectable : public Sprite
 {
 public:
-   Collectable(int x, int y, int w, int h, const string& imgPath);
+   static Collectable* getInstance(int x, int y, int w, int h, const string& imgPath);
    void draw() const;
+protected:
+   Collectable(int x, int y, int w, int h, const string& imgPath);
+
 };
 
 #endif

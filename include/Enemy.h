@@ -11,7 +11,7 @@ class System;
 class Enemy : public Sprite
 {
 public:
-   Enemy(int x, int y, int w, int h, const string& imgPath);
+   static Enemy* getInstance(int x, int y, int w, int h, const string& imgPath);
    void draw() const;
    void scriptedMovement();
    virtual void tick(GameEngine* ge);
@@ -19,6 +19,9 @@ public:
    void moveEnemy(int speed);
    void setSpeed(int s){speed = s;}
    int getSpeed(){return speed;}
+protected:
+   Enemy(int x, int y, int w, int h, const string& imgPath);
+
 private:
    int speed;
    bool isMovingLeft;

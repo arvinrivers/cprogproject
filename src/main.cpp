@@ -14,11 +14,12 @@ Ground* lost = Ground::getInstance(0 , 0, 700, 500, resPath + "images/lost.jpg")
 GameEngine gameEngine;
 
 class MyPlayer : public Player {
+
 public:
-	MyPlayer() : Player(320, 40, 40, 40, resPath + "images/player.jpg")
-	{
-		
-	}
+    static MyPlayer* getInstance(int x, int y, int w, int h, const string& imgPath) {
+		return new MyPlayer();
+    }
+
 	void keyDownHandler(const SDL_Event& event) 
 	{
 		switch (event.key.keysym.sym) 
@@ -52,12 +53,16 @@ public:
          gameEngine.add(lost);
         }
     }
-
+    protected:
+	MyPlayer() : Player(320, 40, 40, 40, resPath + "images/player.jpg")
+	{
+		
+	}
 
 };
 
 int main(int argc, char* argv[]) {
-    Player* player = new MyPlayer();
+    MyPlayer* player = MyPlayer::getInstance(320, 40, 40, 40, resPath + "images/player.jpg");
     Collectable* coin = Collectable::getInstance(660, 300, 40, 40, resPath + "images/coin.png");
     Ground* ground = Ground::getInstance(300, 300, 300, 20, resPath + "images/ground.jpg");
     Ground* ground2 = Ground::getInstance(15, 300, 250, 20, resPath + "images/ground.jpg");

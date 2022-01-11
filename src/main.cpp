@@ -25,10 +25,12 @@ public:
 		switch (event.key.keysym.sym) 
 		{
 		case SDLK_RIGHT:
-			rect.x += 15; 
+            if(rect.x < 660)
+			    rect.x += 15; 
 			break;
 	    case SDLK_LEFT: 
-			rect.x -= 15; 
+            if(rect.x > 0)
+			    rect.x -= 15; 
 			break;
         case SDLK_UP: 
             jump();

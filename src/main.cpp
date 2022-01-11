@@ -40,14 +40,14 @@ public:
         }
     }
     void winConditionHandler(){
-        if (winConditionMet){
+        if (getWinConditionMet()){
          gameEngine.remove(this);
          gameEngine.add(won);
         }
     }
 
     void loseConditionHandler(){
-        if (loseConditionMet){
+        if (getLoseConditionMet()){
          gameEngine.remove(this);
          gameEngine.add(lost);
         }
@@ -56,32 +56,15 @@ public:
 
 };
 
-class MyEnemy : public Enemy {
-public:
-	MyEnemy() : Enemy(50, 250, 40, 40, resPath + "images/enemy.jpg")
-	{
-        
-    }
-    
-
-};
-
-class MyCoin : public Collectable {
-public:
-	MyCoin() : Collectable(660, 300, 40, 40, resPath + "images/coin.png")
-	{
-    }
-};
-
 int main(int argc, char* argv[]) {
     Player* player = new MyPlayer();
-    Enemy* enemy = new MyEnemy();
-    enemy->setSpeed(-10);
-    Collectable* coin = new MyCoin();
+    Collectable* coin = Collectable::getInstance(660, 300, 40, 40, resPath + "images/coin.png");
     Ground* ground = Ground::getInstance(300, 300, 300, 20, resPath + "images/ground.jpg");
     Ground* ground2 = Ground::getInstance(15, 300, 250, 20, resPath + "images/ground.jpg");
+    Enemy* enemy1 = Enemy::getInstance(50, 250, 40, 40, resPath + "images/enemy.jpg");
+    enemy1->setSpeed(-10);
     gameEngine.add(player);
-    gameEngine.add(enemy);
+    gameEngine.add(enemy1);
     gameEngine.add(coin);
     gameEngine.add(ground);
     gameEngine.add(ground2);

@@ -11,11 +11,14 @@ Kommer med funktionalitet för spelarstyrd rörelse samt win/lose-conditions.
 #include "Sprite.h"
 #include "System.h"
 #include <string>
+#include <iostream>
 using namespace std;
 
 class Player : public Sprite
 {
 public:
+   ~Player(){SDL_DestroyTexture(getTexture());
+   cout << "Player Destroyed";}
    static Player* getInstance(int x, int y, int w, int h, const string& imgPath);
    void keyDown(const SDL_Event& event);
    virtual void jump(){};
@@ -23,12 +26,15 @@ public:
    virtual void tick(GameEngine* ge);
    virtual void winConditionHandler(){};
    virtual void loseConditionHandler(){};
-
-   //Hjälpfält för logiken med att vinna och förlora
-   bool winConditionMet = false;
-   bool loseConditionMet = false;
+   void setWinConditionMet(bool value){winConditionMet = value;}
+   void setLoseConditionMet(bool value){loseConditionMet = value;}
+   bool getWinConditionMet(){return winConditionMet;}
+   bool getLoseConditionMet(){return loseConditionMet;}
 protected:
    Player(int x, int y, int w, int h, const string& imgPath);
+private:
+   bool winConditionMet = false;
+   bool loseConditionMet = false;
 
 };
 

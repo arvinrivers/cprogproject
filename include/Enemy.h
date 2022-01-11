@@ -11,11 +11,14 @@ Kommer med funktionalitet för skriptad rörelse av fienderna.
 #include "Sprite.h"
 #include "System.h"
 #include "Ground.h"
+#include <iostream>
 
 class System;
 class Enemy : public Sprite
 {
 public:
+   ~Enemy(){SDL_DestroyTexture(getTexture());
+   std::cout << "Enemy Destroyed";}
    static Enemy* getInstance(int x, int y, int w, int h, const string& imgPath);
    void scriptedMovement();
    virtual void tick(GameEngine* ge);

@@ -40,5 +40,3 @@ void Player::tick(GameEngine* ge)
 }
 
 
-
-

@@ -95,7 +95,7 @@ bool Sprite::checkCollision(std::vector<Sprite*> list1, std::vector<Sprite*> lis
       for (Sprite* s2 : list2){
         const SDL_Rect& B = s2->getRect();
         return (A.x+A.w > B.x && B.x+B.w > A.x && A.y + A.h > B.y && B.y+B.h > A.y);
-    }
+        }
     }
     return false;
 }

@@ -30,7 +30,7 @@ void Player::keyDown(const SDL_Event& event) {
 void Player::tick(GameEngine* ge)
 {
 	updateGrounded(ge->grounds);
-	if (checkCollision(ge->players, ge->enemies) == true) loseConditionMet = true;
+	if (checkCollision(ge->enemies, ge->players) == true) loseConditionMet = true;
     if (checkCollision(ge->players, ge->collectables) == true) winConditionMet = true;
     winConditionHandler();
 	loseConditionHandler();

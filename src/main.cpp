@@ -44,14 +44,16 @@ public:
     }
     void winConditionHandler(){
         if (getWinConditionMet()){
-         gameEngine.remove(this);
+        for (Sprite* s : gameEngine.added)
+            gameEngine.remove(s);
          gameEngine.add(won);
         }
     }
 
     void loseConditionHandler(){
         if (getLoseConditionMet()){
-         gameEngine.remove(this);
+         for (Sprite* s : gameEngine.added)
+            gameEngine.remove(s);
          gameEngine.add(lost);
         }
     }

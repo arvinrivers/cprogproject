@@ -17,8 +17,7 @@ class System;
 class Enemy : public Sprite
 {
 public:
-   ~Enemy(){SDL_DestroyTexture(getTexture());
-   std::cout << "Enemy Destroyed";}
+   ~Enemy(){SDL_DestroyTexture(getTexture());}
    static Enemy* getInstance(int x, int y, int w, int h, const string& imgPath);
    void scriptedMovement();
    virtual void tick(GameEngine* ge);

@@ -30,8 +30,12 @@ void Player::keyDown(const SDL_Event& event) {
 void Player::tick(GameEngine* ge)
 {
 	updateGrounded(ge->grounds);
-	if (checkCollision(ge->enemies, ge->players) == true) loseConditionMet = true;
-    if (checkCollision(ge->players, ge->collectables) == true) winConditionMet = true;
+	for (Sprite* s : ge->enemies){
+		if (checkCollision(getRect(), s->getRect()) == true) loseConditionMet = true;
+	}
+	for (Sprite* s : ge->collectables){
+   		if (checkCollision(getRect(), s->getRect()) == true) winConditionMet = true;
+	}
     winConditionHandler();
 	loseConditionHandler();
 	if (!isGrounded()){

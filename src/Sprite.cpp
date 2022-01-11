@@ -89,15 +89,8 @@ void Sprite::setJumping(bool state){
 }
 
 //Kollar huruvida angivna objekt kolliderar med varandra
-bool Sprite::checkCollision(std::vector<Sprite*> list1, std::vector<Sprite*> list2) {
-    for (Sprite* s1 : list1){
-      const SDL_Rect& A = s1->getRect();
-      for (Sprite* s2 : list2){
-        const SDL_Rect& B = s2->getRect();
-        return (A.x+A.w > B.x && B.x+B.w > A.x && A.y + A.h > B.y && B.y+B.h > A.y);
-        }
-    }
-    return false;
+bool Sprite::checkCollision(const SDL_Rect& a, const SDL_Rect& b) {
+     return (a.x+a.w > b.x && b.x+b.w > a.x && a.y + a.h > b.y && b.y+b.h > a.y);
 }
 
 //Ritar upp objektet på skärmen

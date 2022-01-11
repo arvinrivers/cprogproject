@@ -17,8 +17,7 @@ using namespace std;
 class Player : public Sprite
 {
 public:
-   ~Player(){SDL_DestroyTexture(getTexture());
-   cout << "Player Destroyed";}
+   ~Player(){SDL_DestroyTexture(getTexture());}
    static Player* getInstance(int x, int y, int w, int h, const string& imgPath);
    void keyDown(const SDL_Event& event);
    virtual void jump(){};

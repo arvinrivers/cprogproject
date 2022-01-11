@@ -16,8 +16,7 @@
 class Collectable : public Sprite
 {
 public:
-   ~Collectable(){SDL_DestroyTexture(getTexture());
-   std::cout << "Collectable Destroyed";}
+   ~Collectable(){SDL_DestroyTexture(getTexture());}
    static Collectable* getInstance(int x, int y, int w, int h, const string& imgPath);
 protected:
    Collectable(int x, int y, int w, int h, const string& imgPath);

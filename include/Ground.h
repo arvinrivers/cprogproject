@@ -15,8 +15,7 @@ Subklass till Sprite som tillhandahåller plattformar som spelaren kan stå på
 class Ground : public Sprite
 {
 public:
-   ~Ground(){SDL_DestroyTexture(getTexture());
-   std::cout << "Ground Destroyed";}
+   ~Ground(){SDL_DestroyTexture(getTexture());}
    static Ground* getInstance(int x, int y, int w, int h, const string& imgPath);
 protected:
    Ground(int x, int y, int w, int h, const string& imgPath);

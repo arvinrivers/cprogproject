@@ -1,6 +1,6 @@
 /*
-Subklass till Sprite som tillhandahåller själva spelarkaraktären.
-Kommer med funktionalitet för spelarstyrd rörelse samt win/lose-conditions.
+   Subklass till Sprite som tillhandahåller själva spelarkaraktären.
+   Kommer med funktionalitet för spelarstyrd rörelse samt win/lose-conditions.
 */
 
 #ifndef PLAYER_H
@@ -11,14 +11,12 @@ Kommer med funktionalitet för spelarstyrd rörelse samt win/lose-conditions.
 #include "Sprite.h"
 #include "System.h"
 #include <string>
-#include <iostream>
-using namespace std;
 
 class Player : public Sprite
 {
 public:
    ~Player(){SDL_DestroyTexture(getTexture());}
-   static Player* getInstance(int x, int y, int w, int h, const string& imgPath);
+   static Player* getInstance(int x, int y, int w, int h, const std::string& imgPath);
    void keyDown(const SDL_Event& event);
    virtual void jump(){};
    virtual void keyDownHandler(const SDL_Event& event){}
@@ -30,11 +28,11 @@ public:
    bool getWinConditionMet(){return winConditionMet;}
    bool getLoseConditionMet(){return loseConditionMet;}
 protected:
-   Player(int x, int y, int w, int h, const string& imgPath);
+   Player(int x, int y, int w, int h, const std::string& imgPath);
 private:
+   //Dessa flaggas som sanna ifall regler uppsatta av implementationen uppfylls
    bool winConditionMet = false;
    bool loseConditionMet = false;
-
 };
 
 #endif

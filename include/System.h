@@ -1,5 +1,5 @@
 /*
-Utility-klass som står för själva fönstret och dess renderer
+    Utility-klass som står för själva fönstret och dess renderer
 */
 
 #ifndef SYSTEM_H

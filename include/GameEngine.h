@@ -8,6 +8,7 @@ till själva tick-systemet.
 
 #include "Sprite.h"
 #include <vector>
+#include <string>
 
 class GameEngine
 {
@@ -15,14 +16,19 @@ public:
 	void add(Sprite*);
 	void remove(Sprite*);
 	void run();
+
+	void removeAll();
 	
-	//Grounds, enemies, collectables och players är de sprites som syns på skärmen ett givet tick
-	//added är de nya sprites som skall ritas upp av spelmotorn denna tick
-	std::vector<Sprite*> grounds, enemies, collectables, added, players;
+	//Grounds, enemies, goals och players är de sprites som syns på skärmen ett givet tick
+	std::vector<Sprite*> grounds, enemies, goals, players;
 private:
 	void removeHelp(std::vector<Sprite*>);
 	//Sprites är alla sprites som finns på skärmen ett givet tick
 	std::vector<Sprite*> sprites;	
+
+	//Sprites som skall ritas upp på skärmen ett givet tick
+	std::vector<Sprite*> added;
+
 	//Removed är alla sprites som skall tas bort av spelmotorn ett givet tick
 	std::vector<Sprite*> removed;
 };

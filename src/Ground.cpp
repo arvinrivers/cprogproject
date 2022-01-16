@@ -9,11 +9,11 @@ Subklass till Sprite som tillhandahåller plattformar som spelaren kan stå på
 #include "Ground.h"
 
 //Konstruktor
-Ground:: Ground(int x, int y, int w, int h,const string& imgPath):Sprite(x,y,w,h,imgPath){
+Ground:: Ground(int x, int y, int w, int h,const std::string& imgPath):Sprite(x,y,w,h,imgPath){
   
 }
 
 //Returnerar en instans av klassen
-Ground* Ground::getInstance(int x, int y, int w, int h, const string& imgPath) {
+Ground* Ground::getInstance(int x, int y, int w, int h, const std::string& imgPath) {
 		return new Ground(x, y, w, h, imgPath);
 }

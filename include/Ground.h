@@ -1,5 +1,5 @@
 /*
-Subklass till Sprite som tillhandahåller plattformar som spelaren kan stå på
+   Subklass till Sprite som tillhandahåller plattformar som spelaren kan stå på
 */
 
 #ifndef GROUND_H
@@ -9,17 +9,16 @@ Subklass till Sprite som tillhandahåller plattformar som spelaren kan stå på
 #include <SDL2/SDL_image.h>
 #include "Sprite.h"
 #include "System.h"
-#include <iostream>
+#include <string>
 
 
 class Ground : public Sprite
 {
 public:
    ~Ground(){SDL_DestroyTexture(getTexture());}
-   static Ground* getInstance(int x, int y, int w, int h, const string& imgPath);
+   static Ground* getInstance(int x, int y, int w, int h, const std::string& imgPath);
 protected:
-   Ground(int x, int y, int w, int h, const string& imgPath);
-
+   Ground(int x, int y, int w, int h, const std::string& imgPath);
 };
 
 #endif

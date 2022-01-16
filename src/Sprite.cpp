@@ -7,11 +7,9 @@ funktioner för att kunna ritas upp på skärmen.
 #include "Sprite.h"
 #include "System.h"
 #include "GameEngine.h"
-#include <iostream>
-#include <string>
 
 //Konstruktor
-Sprite::Sprite(int x, int y, int w, int h, const string& imgPath): rect{x,y,w,h}{
+Sprite::Sprite(int x, int y, int w, int h, const std::string& imgPath): rect{x,y,w,h}{
     SDL_Surface* surface = IMG_Load(imgPath.c_str());
     texture = SDL_CreateTextureFromSurface(sys.get_renderer(), surface);
     SDL_FreeSurface(surface);

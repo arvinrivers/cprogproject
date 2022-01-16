@@ -9,16 +9,15 @@ Kommer med funktionalitet för skriptad rörelse av fienderna.
 #include "System.h"
 #include "Enemy.h"
 #include "GameEngine.h"
-#include <iostream>
 
 //Konstruktor
-Enemy::Enemy(int x, int y, int w, int h,const string& imgPath):Sprite(x,y,w,h,imgPath){
+Enemy::Enemy(int x, int y, int w, int h,const std::string& imgPath):Sprite(x,y,w,h,imgPath){
 	setySpeed(0);
-	affectedByGravity = true;
+	setAffectedByGravity(true);
 }
 
 //Returnerar en instans av klassen
-Enemy* Enemy::getInstance(int x, int y, int w, int h, const string& imgPath) {
+Enemy* Enemy::getInstance(int x, int y, int w, int h, const std::string& imgPath) {
 		return new Enemy(x, y, w, h, imgPath);
 }
 
@@ -26,8 +25,9 @@ Enemy* Enemy::getInstance(int x, int y, int w, int h, const string& imgPath) {
 void Enemy::tick(GameEngine* ge)
 {
 	updateGrounded(ge->grounds);
+	SDL_Rect thisRect = getRect();
 	if (!isGrounded()){
-		rect.y += 1;
+		setRectY(thisRect.y + 1);
 	}
 	scriptedMovement();
 }
@@ -48,14 +48,15 @@ int Enemy::nextEdge(){
 void Enemy::scriptedMovement(){
     if(isGrounded()){
     	int edge = nextEdge();
-		if (rect.x + speed < edge && speed < 0){
-			rect.x = edge;
-		}else if(rect.x + rect.w + speed > edge && speed > 0){
-			rect.x = edge - rect.w;
+		SDL_Rect thisRect = getRect();
+		if (thisRect.x + speed < edge && speed < 0){
+			setRectX(edge);
+		}else if(thisRect.x + thisRect.w + speed > edge && speed > 0){
+			setRectX(edge - thisRect.w);
 		}else{
-			rect.x += speed;
+			setRectX(thisRect.x + speed);
 		}
-		if(rect.x == edge || rect.x + rect.w == edge){
+		if(thisRect.x == edge || thisRect.x + thisRect.w == edge){
 			speed = -speed;
 		}
     }

@@ -11,14 +11,14 @@ Kommer med funktionalitet för skriptad rörelse av fienderna.
 #include "Sprite.h"
 #include "System.h"
 #include "Ground.h"
-#include <iostream>
+#include <string>
 
 class System;
 class Enemy : public Sprite
 {
 public:
    ~Enemy(){SDL_DestroyTexture(getTexture());}
-   static Enemy* getInstance(int x, int y, int w, int h, const string& imgPath);
+   static Enemy* getInstance(int x, int y, int w, int h, const std::string& imgPath);
    void scriptedMovement();
    virtual void tick(GameEngine* ge);
    int nextEdge();
@@ -26,7 +26,7 @@ public:
    void setSpeed(int s){speed = s;}
    int getSpeed(){return speed;}
 protected:
-   Enemy(int x, int y, int w, int h, const string& imgPath);
+   Enemy(int x, int y, int w, int h, const std::string& imgPath);
 
 private:
    //Indikerar hastigheten som fienden rör sig varje tick

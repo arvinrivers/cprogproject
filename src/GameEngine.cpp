@@ -10,8 +10,7 @@ till själva tick-systemet.
 #include "Ground.h"
 #include "Enemy.h"
 #include "Player.h"
-#include "Collectable.h"
-#include <iostream>
+#include "Goal.h"
 #define FPS 60
 using namespace std;
 
@@ -24,8 +23,8 @@ void GameEngine::add(Sprite* sprite) {
 	if (Enemy* enemy = dynamic_cast<Enemy*>(sprite)){
 		enemies.push_back(enemy);
 	}
-	if (Collectable* col = dynamic_cast<Collectable*>(sprite)){
-		collectables.push_back(col);
+	if (Goal* col = dynamic_cast<Goal*>(sprite)){
+		goals.push_back(col);
 	}
 	if (Player* player = dynamic_cast<Player*>(sprite)){
 		players.push_back(player);
@@ -35,6 +34,13 @@ void GameEngine::add(Sprite* sprite) {
 //Plockar bort en sprite från spelsystemet till nästa tick
 void GameEngine::remove(Sprite* sprite) {
 	removed.push_back(sprite);
+}
+
+//Raderar alla sprites i spelet, exempelvis vid vinst och förlust
+void GameEngine::removeAll() {
+	for(Sprite* s : sprites) {
+		remove(s);
+	}
 }
 
 //Loopen som tillhandahåller hela spelomgången
@@ -63,7 +69,7 @@ void GameEngine::run() {
 		removeHelp(grounds);
 		removeHelp(players);
 		removeHelp(enemies);
-		removeHelp(collectables);
+		removeHelp(goals);
 
 		for (Sprite* s : removed) {
 			for (vector<Sprite*>::iterator i = sprites.begin(); i != sprites.end();) {
